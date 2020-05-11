@@ -67,6 +67,16 @@ CREATE TABLE if not EXISTS `bookings`(
     FOREIGN KEY (`hotel_id`) REFERENCES hotels(`hotel_id`)
 );
 
+CREATE TABLE IF NOT EXISTS `hotel_images`(
+	`hotel_id` INT AUTO_INCREMENT,
+    `image_1` VARCHAR(255) DEFAULT NULL,
+    `image_2` VARCHAR(255) DEFAULT NULL,
+    `image_3` VARCHAR(255) DEFAULT NULL,
+    `image_4` VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (`hotel_id`),
+    FOREIGN KEY (`hotel_id`) REFERENCES hotels(`hotel_id`)
+);
+
 CREATE TABLE IF NOT EXISTS `booking_items`(
 	`booking_id` INT NOT NULL,
     `room_category_id` INT NOT NULL,
@@ -75,4 +85,3 @@ CREATE TABLE IF NOT EXISTS `booking_items`(
     FOREIGN KEY (`room_category_id`) REFERENCES rooms_category(`room_category_id`),
     FOREIGN KEY (`booking_id`) REFERENCES bookings(`booking_id`)
 );
-
