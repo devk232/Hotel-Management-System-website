@@ -26,7 +26,8 @@ app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
 app.get('*', (req, res) => {
-  res.status(404).send('You did something wrong!');
+  res.status(404);
+  res.render('404');
 });
 
 const PORT = process.env.PORT || 5000;
