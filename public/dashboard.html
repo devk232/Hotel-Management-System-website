@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>hotel.me</title>
+</head>
+<body>
+    <div id = "nav">
+        <img src = "images/logo.png" id = "logo">
+        <a id="profile" href="profile"> Hi User!   </a>
+        <a href="logout">Logout</a>
+    </div>
+    <div class="preferences">
+
+    </div>
+    <div class="content">
+
+    </div>
+    <script>
+        window.onscroll = function() {myFunction()};
+        var navbar = document.getElementById("nav");
+        var sticky = navbar.offsetTop;
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>  
+</body>
+</html>

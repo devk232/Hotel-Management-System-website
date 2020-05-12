@@ -10,13 +10,13 @@ router.get("/register", (req, res) => {
     res.render("register")
   } else {
     res.status = 401;
-    res.redirect("/dashboard?logout+first")
+    res.redirect("/dashboard?logout+first");
   }
 });
 
 router.post("/register", (req, res) => {
-  const { fname,lname ,email, mobile,  password, password2} = req.body
-  let errors = []
+  const { fname,lname ,email, mobile,  password, password2} = req.body;
+  let errors = [];
   if (password != password2) {
     errors.push({ msg: "Passwords do not match" })
   }
@@ -51,6 +51,7 @@ router.post("/register", (req, res) => {
   )
 });
 
+
 router.get("/login", (req, res) => {
   if (!req.session.user) {
     res.statusCode = 200
@@ -68,32 +69,58 @@ router.post("/login", (req, res) => {
     [email],
     (err, rows) => {
       if (err) res.status(500).send(err)
-      user = rows[0];
-      if (user) {
-        const result = bcrypt.compareSync(password, user.password);
+        customer = rows[0];
+      if (customer) {
+        const result = bcrypt.compareSync(password, customer.password);
         if(result){
-          res.render('dashboard');
+          console.log("sads");
+          res.redirect(`dashboard/${customer.customer_id}`);
         }
         else{
           res.render('login');
         }
       } else {
-        res.render('login', { error: "Username does not exist" });
+        res.render('login', { error: "This EmailId does not exists" });
       }
     },
   )
 });
 
-router.get("/dashboard", (req, res) => {
-  res.render('dashboard');
-  
+// fetch dashboard coressponding to given user
+router.get("/dashboard/:id", (req, res) => {
+  if(!req.session.user){
+    // let sql = `SELECT * FROM 
+    //            hotels JOIN hotels_location
+    //            using(hotel_id)
+    //            JOIN 
+    //            ORDER BY rating`;
+    console.log("gy");
+    // mySqlConnection.query(sql , (err , rows) => {
+        // if(err)
+        //   throw err;
+        // else{
+          mySqlConnection.query("SELECT * FROM customers WHERE customer_id = ?",[req.params.id], (err , result) => {
+            if(err)
+              throw err;
+            else{
+              customer = result[0];
+              res.render('dashboard', {customer});
+            }
+          });
+        // }     
+    // });
+  }
+  else{
+    res.status(401);
+    res.redirect('/login');
+  }
 });
 
 router.get("/logout", (req, res, next) => {
   if (req.session.user) {
     req.session.destroy(() => {
       res.status = 200;
-      res.redirect('/users/login?logout+success');
+      res.redirect('/login?logout+success');
     })
   } else {
     res.status(400);

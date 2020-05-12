@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `customers`(
 CREATE TABLE IF NOT EXISTS `hotels`(
 	`hotel_id` INT NOT NULL AUTO_INCREMENT,
     `hotel_name` varchar(255) NOT NULL,
-	`rating` DECIMAL(2,2) NOT NULL,
+	`rating` DECIMAL(2,1) NOT NULL,
     `no_of_reviews` BIGINT NOT NULL default 0,
      PRIMARY KEY (`hotel_id`)
 );
@@ -85,3 +85,7 @@ CREATE TABLE IF NOT EXISTS `booking_items`(
     FOREIGN KEY (`room_category_id`) REFERENCES rooms_category(`room_category_id`),
     FOREIGN KEY (`booking_id`) REFERENCES bookings(`booking_id`)
 );
+
+INSERT INTO `hotels` VALUES (1,'Hotel Ambience',03.90,1212);
+INSERT INTO `hotels_location` VALUES (1,'Opposite Platform No. 1 Railway Station Campus', 'Gwalior');
+INSERT INTO `hotels_contact` VALUES (1,'0751 404 0341',9876852321);
