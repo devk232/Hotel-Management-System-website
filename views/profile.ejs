@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/profile.css">
+<title>hotel.me</title>
+
+<div id = "nav">
+    <img src = "/images/logo.png" id = "logo">
+    <a id="profile" href="profile">Hi <%=customer.first_name%> ! </a>
+    <a href="/users/logout">Logout</a>
+</div>
+
+<div id = "name">
+    <p><%= customer.first_name %> <%= customer.last_name %></p>
+</div>
+<div id = "bookings">
+    <h1>Bookings: </h1>
+    <table>
+        <tr>
+            <th>Hotel Name</th>
+            <th>Booking Date</th>
+            <th>End Date</th>
+            <th>Number of Rooms Booked</th>
+            <th>Room Type</th>
+            <th>Price Paid</th>
+        </tr>
+        <% rows.forEach((item) => { %>
+            <div class = "row">
+                <tr>
+                    <td><%= item.hotel_name %> </td>
+                    <td><%= item.start_time%></td>
+                    <td><%= item.end_time%></td>
+                    <td><%= item.category_name%></td>
+                    <td><%= item.quantity%></td>
+                    <td><%= item.total_price%></td>
+                </tr>
+            </div> 
+        <% });%>
+    </table>
+</div>
