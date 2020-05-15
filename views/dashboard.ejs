@@ -8,13 +8,15 @@
     <a href="/users/logout">Logout</a>
 </div>
 <div id = "preferences">
-    <a>Sort By Price</a>
-    <a>Sort By Hotel Rating</a>
+    <br><br><br>
+    <a href = "/users/dashboard/<%= customer.customer_id%>/sort_price_asc">Sort By Price - Low to High</a>
+    <a href = "/users/dashboard/<%= customer.customer_id%>/sort_price_dsc">Sort By Price - High to Low</a>
+    <a href = "/users/dashboard/<%=customer.customer_id%>">Sort By Rating</a>
 </div>
 <div id = "content">
     <br><br><br><br>
     <h1>Hotels </h1>
-    <br><br> <br>
+    <br><br><br>
     <% rows.forEach((item) => { %>
         <div class = "hotel">
             <img src = "/images/<%= item.image_1%>" width="295px" height="185px">
@@ -27,7 +29,7 @@
             <h3>Contact <br>Telephone Number: <%= item.telephone_no%> <br> Mobile Number: <%= item.mobile_no%></h4>  
             <br>
             <p>Rooms Starting At Rs. <%= item.unit_price%></p>
-            <button onclick="location.href = '../hotel/<%= rows[0].hotel_id %>/<%=customer.customer_id%>';">Book Now!</button>
+            <button onclick="location.href = '/users/hotel/<%= item.hotel_id %>/<%=customer.customer_id%>';">Book Now!</button>
             <br><br><br><br>
             <hr>
         </div> 

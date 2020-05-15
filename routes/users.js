@@ -125,10 +125,83 @@ router.get("/dashboard/:id", (req, res) => {
     res.redirect('/login?login+first');
   }
 });
-// different type of queries to be performed``
-// sort by price, rating, popularity, searchbar(REGXP), room_type , no of rooms available etc.
 
-// get request on profile page
+router.get("/dashboard/:id/sort_price_asc", (req, res) => {
+  if(!req.session.user){
+    let sql =  `SELECT * FROM 
+    hotels JOIN hotels_location
+    using(hotel_id)  
+    JOIN  hotels_contact
+    using(hotel_id)
+    JOIN hotel_images
+    using(hotel_id)
+    JOIN rooms using(hotel_id)
+    JOIN rooms_category
+    using(room_category_id)
+    WHERE rooms.unit_price = (SELECT MIN(unit_price) FROM  rooms where hotel_id = hotels.hotel_id)
+    ORDER BY rooms.unit_price`;
+    mySqlConnection.query(sql , (err , rows) => {
+        if(err){
+          throw err;
+        }
+        else{
+          mySqlConnection.query(
+          "SELECT * FROM customers WHERE customer_id = ?"
+          ,[req.params.id], 
+          (err , result) => {
+            if(err)
+              throw err;
+            else{
+              customer = result[0];
+              res.render('dashboard', {customer, rows: rows});
+            }
+          });
+        }     
+    });
+  }
+  else{
+    res.status(401);
+    res.redirect('/login?login+first');
+  }
+});
+router.get("/dashboard/:id/sort_price_dsc", (req, res) => {
+  if(!req.session.user){
+    let sql =  `SELECT * FROM 
+    hotels JOIN hotels_location
+    using(hotel_id)  
+    JOIN  hotels_contact
+    using(hotel_id)
+    JOIN hotel_images
+    using(hotel_id)
+    JOIN rooms using(hotel_id)
+    JOIN rooms_category
+    using(room_category_id)
+    WHERE rooms.unit_price = (SELECT MIN(unit_price) FROM  rooms where hotel_id = hotels.hotel_id)
+    ORDER BY rooms.unit_price DESC`;
+    mySqlConnection.query(sql , (err , rows) => {
+        if(err){
+          throw err;
+        }
+        else{
+          mySqlConnection.query(
+          "SELECT * FROM customers WHERE customer_id = ?"
+          ,[req.params.id], 
+          (err , result) => {
+            if(err)
+              throw err;
+            else{
+              customer = result[0];
+              res.render('dashboard', {customer, rows: rows});
+            }
+          });
+        }     
+    });
+  }
+  else{
+    res.status(401);
+    res.redirect('/login?login+first');
+  }
+});
 router.get("/profile/:id" , (req , res) => {
   if(!req.session.user){
     mySqlConnection.query(
@@ -140,12 +213,14 @@ router.get("/profile/:id" , (req , res) => {
         else{
           customer = result[0];
           mySqlConnection.query(
-          `SELECT * FROM customers
-           JOIN bookings
-           using(customer_id)
-           JOIN booking_items
-           using(booking_id)
-           WHERE customer_id = ?`,
+          `SELECT *,rooms.unit_price*booking_items.quantity AS price
+                                 FROM booking_items
+                                 JOIN bookings using(booking_id)
+                                 JOIN hotels using(hotel_id)
+                                 JOIN rooms_category using(room_category_id)
+                                 JOIN rooms ON rooms.hotel_id = hotels.hotel_id AND rooms.room_category_id = rooms_category.room_category_id
+                                 JOIN customers using(customer_id)
+                                 WHERE customer_id = ?`,
            [req.params.id],
           (err,rows) =>{
               if(err){

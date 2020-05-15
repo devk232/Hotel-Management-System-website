@@ -20,8 +20,8 @@
             <th>Hotel Name</th>
             <th>Booking Date</th>
             <th>End Date</th>
-            <th>Number of Rooms Booked</th>
             <th>Room Type</th>
+            <th>Number of Rooms Booked</th>
             <th>Price Paid</th>
         </tr>
         <% bookings.forEach((item) => { %>
@@ -32,7 +32,7 @@
                     <td><%= item.end_time%></td>
                     <td><%= item.category_name%></td>
                     <td><%= item.quantity%></td>
-                    <td><%= item.total_price%></td>
+                    <td><%= item.price%></td>
                 </tr>
             </div> 
         <% });%>
