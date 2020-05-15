@@ -1,17 +1,20 @@
 <link rel="stylesheet" href="/css/profile.css">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 <title>hotel.me</title>
 
 <div id = "nav">
     <img src = "/images/logo.png" id = "logo">
-    <a id="profile" href="profile">Hi <%=customer.first_name%> ! </a>
+    <a id="profile" href="">Hi <%=customer.first_name%> ! </a>
     <a href="/users/logout">Logout</a>
 </div>
 
 <div id = "name">
+    <Br><br><br><Br><br><br><Br><br><br>
     <p><%= customer.first_name %> <%= customer.last_name %></p>
 </div>
 <div id = "bookings">
-    <h1>Bookings: </h1>
+    <h3>Bookings </h3>
+    <br>
     <table>
         <tr>
             <th>Hotel Name</th>
@@ -21,7 +24,7 @@
             <th>Room Type</th>
             <th>Price Paid</th>
         </tr>
-        <% rows.forEach((item) => { %>
+        <% bookings.forEach((item) => { %>
             <div class = "row">
                 <tr>
                     <td><%= item.hotel_name %> </td>

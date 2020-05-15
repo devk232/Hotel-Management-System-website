@@ -85,7 +85,7 @@
     font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
     font-size: 14px;
   }
-  input[type=text], input[type=password],input[type = email], input[type = tel]{
+  input[type=text], input[type=password],input[type = email], input[type = tel], select{
     margin: 5px;
     padding: 0 10px;
     width: 200px;

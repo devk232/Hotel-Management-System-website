@@ -2,6 +2,24 @@
     padding: 0;
     margin:  0;
 }
+#name{
+    height: 400px;
+    background-color: aliceblue;
+    width: 100%;
+    align-self: center;
+}
+#name p{
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 40px;
+    color: black;
+} 
+#bookings h3{
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 40px;
+    font-weight: lighter;
+}
 #logo{
     height: 60px;
     text-align: left;
@@ -35,18 +53,19 @@
     text-decoration: none;
 }
 table th,td{
-    border: 1px dotted gray;
-    border-radius: 12px;
+    border-radius: 4px;
 }
 table{
-    width: 10%;
-    height: 200px;
+    width: 80%;
+    height: 50px;
     margin: auto;
     border-collapse: collapse;
 }
 th{
-    background-color: #0ca3a2;
+    background-color:  #0ca3d2;
     padding: 10px;
+    color: #f2f2f2;
+    font-weight: bolder;
 }
 td{
     background-color: lightgray;

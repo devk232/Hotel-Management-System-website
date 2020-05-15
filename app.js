@@ -24,6 +24,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 600000 }
 }));
+
 app.use('/', require('./routes/index.js'));
 
 app.use('/users', require('./routes/users.js'));

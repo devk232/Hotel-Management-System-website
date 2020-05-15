@@ -4,11 +4,12 @@
 <title>hotel.me</title>
 <div id = "nav">
     <img src = "/images/logo.png" id = "logo">
-    <a id="profile" href="profile">Hi <%=customer.first_name%> ! </a>
+    <a id="profile" href="../profile/<%= customer.customer_id%>">Hi <%=customer.first_name%> ! </a>
     <a href="/users/logout">Logout</a>
 </div>
 <div id = "preferences">
-
+    <a>Sort By Price</a>
+    <a>Sort By Hotel Rating</a>
 </div>
 <div id = "content">
     <br><br><br><br>
@@ -26,7 +27,7 @@
             <h3>Contact <br>Telephone Number: <%= item.telephone_no%> <br> Mobile Number: <%= item.mobile_no%></h4>  
             <br>
             <p>Rooms Starting At Rs. <%= item.unit_price%></p>
-            <button type="button" href = "hotel/:id1/:id2">Book Now!</button>
+            <button onclick="location.href = '../hotel/<%= rows[0].hotel_id %>/<%=customer.customer_id%>';">Book Now!</button>
             <br><br><br><br>
             <hr>
         </div> 
