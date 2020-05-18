@@ -22,7 +22,7 @@ app.use(session({
   secret: 'seCReT',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 600000 }
+  cookie: { maxAge: 360000 }
 }));
 
 app.use('/', require('./routes/index.js'));
