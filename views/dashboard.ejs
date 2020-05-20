@@ -2,36 +2,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
 <title>hotel.me</title>
-<div id = "nav">
-    <img src = "/images/logo.png" id = "logo">
+<div id="nav">
+    <img src="/images/logo.png" id="logo">
     <a id="profile" href="/users/profile/<%= customer.customer_id%>">Hi <%=customer.first_name%> ! </a>
     <a href="/users/logout">Logout</a>
 </div>
-<div id = "preferences">
+<div id="preferences">
     <br><br><br>
-    <a href = "/users/dashboard/<%= customer.customer_id%>/sort_price_asc">Sort By Price - Low to High</a>
-    <a href = "/users/dashboard/<%= customer.customer_id%>/sort_price_dsc">Sort By Price - High to Low</a>
-    <a href = "/users/dashboard/<%=customer.customer_id%>">Sort By Rating</a>
+    <a href="/users/dashboard/<%= customer.customer_id%>/sort_price_asc">Sort By Price - Low to High</a>
+    <a href="/users/dashboard/<%= customer.customer_id%>/sort_price_dsc">Sort By Price - High to Low</a>
+    <a href="/users/dashboard/<%=customer.customer_id%>">Sort By Rating</a>
 </div>
-<div id = "content">
+<div id="content">
     <br><br><br><br>
     <h1>Hotels </h1>
     <br><br><br>
     <% rows.forEach((item) => { %>
-        <div class = "hotel">
-            <img src = "/images/<%= item.image_1%>" width="295px" height="185px">
-            <h1><%= item.hotel_name %></h1>
-            <br><br>
-            <h3><%= item.address %>, <%= item.city %></h3>
-            <br><br>
-            <h3>Rating: <%= item.rating%> stars (<%=item.no_of_reviews %> reviews)</h3>
-            <br><br>
-            <h3>Contact <br>Telephone Number: <%= item.telephone_no%> <br> Mobile Number: <%= item.mobile_no%></h4>  
+    <div class="hotel">
+        <img src="/images/<%= item.image_1%>" width="295px" height="185px">
+        <h1><%= item.hotel_name %></h1>
+        <br><br>
+        <h3><%= item.address %>, <%= item.city %></h3>
+        <br><br>
+        <h3>Rating: <%= item.rating%> stars (<%=item.no_of_reviews %> reviews)</h3>
+        <br><br>
+        <h3>Contact <br>Telephone Number: <%= item.telephone_no%> <br> Mobile Number: <%= item.mobile_no%></h4>
             <br>
             <p>Rooms Starting At Rs. <%= item.unit_price%></p>
-            <button onclick="location.href = '/users/hotel/<%= item.hotel_id %>/<%=customer.customer_id%>';">Book Now!</button>
+            <button onclick="location.href = '/users/hotel/<%= item.hotel_id %>/<%=customer.customer_id%>';">Book
+                Now!</button>
             <br><br><br><br>
             <hr>
-        </div> 
+    </div>
     <% });%>
-</div> 
+</div>

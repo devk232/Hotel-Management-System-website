@@ -1,46 +1,55 @@
-*{
+* {
     padding: 0;
-    margin:  0;
+    margin: 0;
 }
-#name{
+
+#name {
     height: 400px;
     background-color: aliceblue;
     width: 100%;
     align-self: center;
 }
-#name p{
+
+#name p {
     text-align: center;
     font-family: 'Balsamiq Sans', cursive;
     font-size: 40px;
     color: black;
-} 
-#bookings h3{
+}
+
+#bookings h3 {
     text-align: center;
     font-family: 'Balsamiq Sans', cursive;
     font-size: 40px;
     font-weight: lighter;
 }
-#logo{
+
+#logo {
     height: 60px;
     text-align: left;
 }
-#nav{
+
+#nav {
     background-color: #0ca3d2;
     height: 60px;
 }
+
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
+
 #nav a:hover {
     background-color: #ddd;
     color: black;
-  }
+}
+
 #nav a.active {
     background-color: #4CAF50;
     color: white;
 }
+
 #nav a {
     float: right;
     font-weight: bolder;
@@ -52,24 +61,29 @@
     padding: 14px;
     text-decoration: none;
 }
-table th,td{
+
+table th,
+td {
     border-radius: 4px;
 }
-table{
+
+table {
     width: 80%;
     height: 50px;
     margin: auto;
     border-collapse: collapse;
 }
-th{
-    background-color:  #0ca3d2;
+
+th {
+    background-color: #0ca3d2;
     padding: 10px;
     color: #f2f2f2;
     font-weight: bolder;
 }
-td{
+
+td {
     background-color: lightgray;
-    padding : 12px;
+    padding: 12px;
     text-align: center;
     vertical-align: center;
 }

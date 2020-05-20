@@ -3,13 +3,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
 <title>hotel.me</title>
 
-<div id = "nav">
-    <img src = "/images/logo.png" id = "logo">
+<div id="nav">
+    <img src="/images/logo.png" id="logo">
     <a id="profile" href="/users/profile/<%= customer.customer_id%>">Hi <%=customer.first_name%> ! </a>
     <a href="/users/logout">Logout</a>
 </div>
-<div class =  "info">
-    <img src = "/images/<%= rows[0].image_1%>" width="295px" height="185px">
+<div class="info">
+    <img src="/images/<%= rows[0].image_1%>" width="295px" height="185px">
     <br> <br>
     <h1><%= rows[0].hotel_name%></h1>
     <br>
@@ -17,35 +17,36 @@
     <br>
     <h3>Rating: <%= rows[0].rating%> stars (<%=rows[0].no_of_reviews %> reviews)</h3>
     <br>
-    <h3>Contact <br>Telephone Number: <%= rows[0].telephone_no%> <br> Mobile Number: <%= rows[0].mobile_no%></h4>  
-    <br>
-    <br>
-    <div id = "images">
-        <img src = "/images/<%= rows[0].image_2%>" width="295px" height="185px">
-        <img src = "/images/<%= rows[0].image_3%>" width="295px" height="185px">
-        <img src = "/images/<%= rows[0].image_4%>" width="295px" height="185px">
-    </div>
-    <br><br> <hr><br> <br>
-    <h3>Rooms Type Available:</h3><br>
-    <% rows.forEach((item) => { %>
-            <h3><%= item.category_name%>:  Rs. <%= item.unit_price%> (<%=item.available_quantity %> rooms available)</h3>
-            <br>
-    <% }); %>
+    <h3>Contact <br>Telephone Number: <%= rows[0].telephone_no%> <br> Mobile Number: <%= rows[0].mobile_no%></h4>
+        <br>
+        <br>
+        <div id="images">
+            <img src="/images/<%= rows[0].image_2%>" width="295px" height="185px">
+            <img src="/images/<%= rows[0].image_3%>" width="295px" height="185px">
+            <img src="/images/<%= rows[0].image_4%>" width="295px" height="185px">
+        </div>
+        <br><br>
+        <hr><br> <br>
+        <h3>Rooms Type Available:</h3><br>
+        <% rows.forEach((item) => { %>
+        <h3><%= item.category_name%>: Rs. <%= item.unit_price%> (<%=item.available_quantity %> rooms available)</h3>
+        <br>
+        <% }); %>
 </div>
-<div class = "booking">
+<div class="booking">
     <h1>Book Here</h1>
     <form method="post" action="/users/hotel/<%= rows[0].hotel_id %>/<%= customer.customer_id%>">
         <p> Room Type:
-            <select name = "room_category">
+            <select name="room_category">
                 <% rows.forEach(item => { %>
-                     <option value="<%= item.category_name %>"><%= item.category_name%></option>
-               <% }); %>
+                <option value="<%= item.category_name %>"><%= item.category_name%></option>
+                <% }); %>
             </select>
-        No of Rooms: <input type="text" name="quantity"  placeholder="Number of rooms" required></p>
+            No of Rooms: <input type="text" name="quantity" placeholder="Number of rooms" required></p>
         Start Date:
-        <input type="date" name="start_date"  required> End Date:<input type="date" name="end_date" required></p>
+        <input type="date" name="start_date" required> End Date:<input type="date" name="end_date" required></p>
         <br>
         <p class="submit"><input type="submit" name="submit" value="Book Now" required></p>
     </form>
-    </div>
+</div>
 </div>

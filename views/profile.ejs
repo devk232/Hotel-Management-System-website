@@ -2,17 +2,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 <title>hotel.me</title>
 
-<div id = "nav">
-    <img src = "/images/logo.png" id = "logo">
+<div id="nav">
+    <img src="/images/logo.png" id="logo">
     <a id="profile" href="">Hi <%=customer.first_name%> ! </a>
     <a href="/users/logout">Logout</a>
 </div>
 
-<div id = "name">
+<div id="name">
     <Br><br><br><Br><br><br><Br><br><br>
     <p><%= customer.first_name %> <%= customer.last_name %></p>
 </div>
-<div id = "bookings">
+<div id="bookings">
     <h3>Bookings </h3>
     <br>
     <table>
@@ -25,16 +25,16 @@
             <th>Price Paid</th>
         </tr>
         <% bookings.forEach((item) => { %>
-            <div class = "row">
-                <tr>
-                    <td><%= item.hotel_name %> </td>
-                    <td><%= item.start_time%></td>
-                    <td><%= item.end_time%></td>
-                    <td><%= item.category_name%></td>
-                    <td><%= item.quantity%></td>
-                    <td><%= item.price%></td>
-                </tr>
-            </div> 
+        <div class="row">
+            <tr>
+                <td><%= item.hotel_name %> </td>
+                <td><%= item.start_time%></td>
+                <td><%= item.end_time%></td>
+                <td><%= item.category_name%></td>
+                <td><%= item.quantity%></td>
+                <td><%= item.price%></td>
+            </tr>
+        </div>
         <% });%>
     </table>
 </div>
